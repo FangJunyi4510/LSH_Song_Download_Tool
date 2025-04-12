@@ -6,7 +6,6 @@ permissions:
 
 on:
   push:
-    branches: [ main ]
     tags:
       - 'v*'
   workflow_dispatch:
@@ -81,7 +80,7 @@ jobs:
         if [ "$RUNNER_OS" = "Windows" ]; then
           pwsh -Command "Compress-Archive -Path package/* -DestinationPath windows-release.zip"
         else
-          tar -czvf windows-release.tar.gz -C package .
+          tar -czvf linux-release.tar.gz -C package .
         fi
 
     - name: Upload Artifacts
