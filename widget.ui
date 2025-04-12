@@ -15,7 +15,11 @@
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
    <item>
-    <widget class="QTextEdit" name="input"/>
+    <widget class="QTextEdit" name="input">
+     <property name="placeholderText">
+      <string>在此输入歌名，歌名间用空格或换行隔开，歌名中的空格用英文句号（.）代替。</string>
+     </property>
+    </widget>
    </item>
    <item>
     <layout class="QHBoxLayout" name="horizontalLayout_2">
@@ -43,7 +47,11 @@
       </widget>
      </item>
      <item>
-      <widget class="QLineEdit" name="addition"/>
+      <widget class="QLineEdit" name="addition">
+       <property name="placeholderText">
+        <string>在此输入歌手、专辑之类附加到歌名后的搜索词。</string>
+       </property>
+      </widget>
      </item>
     </layout>
    </item>
@@ -90,7 +98,7 @@
         </size>
        </property>
        <property name="text">
-        <string>/ 0</string>
+        <string>/ 1</string>
        </property>
        <property name="textInteractionFlags">
         <set>Qt::TextInteractionFlag::LinksAccessibleByMouse|Qt::TextInteractionFlag::TextSelectableByMouse</set>
@@ -115,6 +123,9 @@
          <height>16777215</height>
         </size>
        </property>
+       <property name="toolTip">
+        <string>用配置的浏览器打开当前歌曲的搜索页面。</string>
+       </property>
        <property name="text">
         <string>打开当前</string>
        </property>
@@ -127,6 +138,9 @@
          <width>80</width>
          <height>16777215</height>
         </size>
+       </property>
+       <property name="toolTip">
+        <string>用当前歌曲名重命名下载文件夹内的最新文件。</string>
        </property>
        <property name="text">
         <string>重命名</string>
@@ -154,6 +168,9 @@
          <height>16777215</height>
         </size>
        </property>
+       <property name="toolTip">
+        <string>依次执行重命名、下一个、打开当前这三个按钮的功能。</string>
+       </property>
        <property name="text">
         <string>一键下一个</string>
        </property>
@@ -180,6 +197,9 @@
          <width>100</width>
          <height>16777215</height>
         </size>
+       </property>
+       <property name="toolTip">
+        <string>打开配置对话框。</string>
        </property>
        <property name="text">
         <string>配置</string>

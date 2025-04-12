@@ -15,29 +15,15 @@ Widget::Widget(QWidget *parent)
     , ui(new Ui::Widget) {
     ui->setupUi(this);
 
-    const QList<QDir> tryList = {
-        QDir::homePath() + "/下载",
-        QDir::homePath() + "/Download",
-        QDir::homePath() + "/桌面",
-        QDir::homePath() + "/Desktop",
-        QDir::homePath()
-    };
-    for(const auto &each : tryList) {
-        path = each;
-        if(path.exists()) {
-            break;
-        }
-    }
-
     dialog.setBrowser(&browser);
     dialog.setPath(&path);
     dialog.setWebsite(&website);
 
     QSettings settings;
     if(!settings.allKeys().isEmpty()) {
-        browser = settings.value("BrowserPath").toString();
-        path = settings.value("DownloadPath").toString();
-        website = settings.value("Website").toString();
+        browser = settings.value("BrowserPath", "").toString();
+        path = settings.value("DownloadPath", "").toString();
+        website = settings.value("Website", "https://www.ihaoge.net/search/result?nsid=4&q=").toString();
     }
 }
 
@@ -53,6 +39,10 @@ void Widget::on_update_clicked() {
     list.clear();
     QString text = ui->input->toPlainText();
     list = text.split(QRegularExpression("\\s+"));
+    for(auto& each : list) {
+        each.replace('.', ' ');
+    }
+    list.removeIf([](QString arg) {return arg.isEmpty();});
     updateName();
 }
 
@@ -88,6 +78,12 @@ void Widget::rename() {
     QString state = "失败";
     if(file.rename(newFilePath)) {
         state = "成功";
+    } else {
+        if(QFileInfo(newFilePath).exists()) {
+            state += " 同名文件已存在";
+        } else {
+            state += " 无法修改文件名";
+        }
     }
     addInfo("重命名 " + info.fileName() + " => " + newFilename + " : " + state);
 }
