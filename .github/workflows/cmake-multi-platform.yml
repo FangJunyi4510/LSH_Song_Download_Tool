@@ -105,12 +105,13 @@ jobs:
 
         mkdir -p AppDir/usr/bin
         cp ${{ matrix.exe_path }} AppDir/usr/bin/
+        cp icon.png AppDir/
 
         mkdir -p AppDir/usr/share/applications
         echo '[Desktop Entry]
         Name=LSH Song Download Tool
         Exec=LSH_Song_Download_Tool
-        Icon=
+        Icon=icon
         Type=Application
         Categories=Utility;
         Comment=Assistant for batch song downloading
