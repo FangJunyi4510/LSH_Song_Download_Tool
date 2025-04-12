@@ -92,8 +92,6 @@ jobs:
             --dir package `
             package/${{ matrix.exe_name }}
 
-          cp "$QtBinPath\libEGL.dll" package/
-          cp "$QtBinPath\opengl32sw.dll" package/
           pwsh -Command "Compress-Archive -Path package/* -DestinationPath windows-release.zip"
 
     - name: Package Artifacts (Linux)
