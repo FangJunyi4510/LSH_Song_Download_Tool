@@ -106,6 +106,13 @@ jobs:
         mkdir -p AppDir/usr/bin
         cp ${{ matrix.exe_path }} AppDir/usr/bin/
 
+        mkdir -p AppDir/usr/share/applications
+        echo '[Desktop Entry]
+        Name=LSH Song Download Tool
+        Exec=LSH_Song_Download_Tool
+        Type=Application
+        Categories=Utility;' > AppDir/usr/share/applications/LSH_Song_Download_Tool.desktop
+
         ./squashfs-root/AppRun AppDir/usr/bin/${{ matrix.exe_name }} -appimage
 
     - name: Upload Artifacts
