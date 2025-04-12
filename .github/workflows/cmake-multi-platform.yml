@@ -62,7 +62,14 @@ jobs:
       shell: bash
       run: cmake -B $BUILD_DIR -DCMAKE_BUILD_TYPE=Release -S .
 
-    - name: Build
+    - name: Build (Windows)
+      if: runner.os == 'Windows'
+      shell: cmd
+      run: |
+        cmake --build "%BUILD_DIR%" --config Release --target ALL_BUILD
+
+    - name: Build (Linux)
+      if: runner.os == 'Linux'
       run: cmake --build $BUILD_DIR --config Release
 
     - name: Package Artifacts
@@ -70,11 +77,10 @@ jobs:
       run: |
         mkdir -p package
         cp ${{ matrix.exe_path }} package/
-        if [ "${{ matrix.os }}" = "windows-latest" ]; then
-          cd package
-          zip -r ../${{ matrix.artifact_name }}.zip *
+        if [ "$RUNNER_OS" = "Windows" ]; then
+          pwsh -Command "Compress-Archive -Path package/* -DestinationPath windows-release.zip"
         else
-          tar -czvf ${{ matrix.artifact_name }}.tar.gz -C package .
+          tar -czvf windows-release.tar.gz -C package .
         fi
 
     - name: Upload Artifacts
