@@ -143,8 +143,8 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           files: |
-            artifacts/linux-release.tar.gz
-            artifacts/windows-release.zip
+            artifacts/linux-release.*
+            artifacts/windows-release.*
           draft: false
           prerelease: false
           generate_release_notes: true
