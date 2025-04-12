@@ -110,7 +110,7 @@ jobs:
         echo '[Desktop Entry]
         Name=LSH Song Download Tool
         Exec=LSH_Song_Download_Tool
-        Icon=lshtool-icon
+        Icon=
         Type=Application
         Categories=Utility;
         Comment=Assistant for batch song downloading
