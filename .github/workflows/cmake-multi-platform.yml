@@ -110,10 +110,16 @@ jobs:
         echo '[Desktop Entry]
         Name=LSH Song Download Tool
         Exec=LSH_Song_Download_Tool
+        Icon=lshtool-icon
         Type=Application
-        Categories=Utility;' > AppDir/usr/share/applications/LSH_Song_Download_Tool.desktop
+        Categories=Utility;
+        Comment=Assistant for batch song downloading
+        Terminal=false
+        EOF' > AppDir/usr/share/applications/LSH_Song_Download_Tool.desktop
 
-        ./squashfs-root/AppRun AppDir/usr/bin/${{ matrix.exe_name }} -appimage
+        ./squashfs-root/AppRun AppDir/usr/share/applications/LSH_Song_Download_Tool.desktop -appimage \
+        -executable=AppDir/usr/bin/LSH_Song_Download_Tool \
+        -qmake=${{ env.Qt6_DIR }}/bin/qmake -verbose=2
 
     - name: Upload Artifacts
       uses: actions/upload-artifact@v4
