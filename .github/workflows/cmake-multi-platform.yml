@@ -15,15 +15,17 @@ jobs:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ubuntu-latest, windows-latest]
+        os: [ubuntu-20.04, windows-latest]
         build_type: [Release]
         include:
           - os: ubuntu-latest
             artifact_name: linux-release
             exe_path: build/LSH_Song_Download_Tool
+            exe_name: LSH_Song_Download_Tool
           - os: windows-latest
             artifact_name: windows-release
             exe_path: build/Release/LSH_Song_Download_Tool.exe
+            exe_name: LSH_Song_Download_Tool.exe
 
     steps:
 
@@ -88,7 +90,7 @@ jobs:
             --no-translations `
             --compiler-runtime `
             --dir package `
-            package/${{ matrix.artifact_name }}
+            package/${{ matrix.exe_name }}
 
           cp "$QtBinPath\libEGL.dll" package/
           cp "$QtBinPath\opengl32sw.dll" package/
@@ -104,7 +106,7 @@ jobs:
         mkdir -p AppDir/usr/bin
         cp ${{ matrix.exe_path }} AppDir/usr/bin/
 
-        ./squashfs-root/AppRun AppDir/usr/bin/${{ matrix.artifact_name }} -appimage
+        ./squashfs-root/AppRun AppDir/usr/bin/${{ matrix.exe_name }} -appimage
 
     - name: Upload Artifacts
       uses: actions/upload-artifact@v4
