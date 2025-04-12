@@ -114,7 +114,7 @@ jobs:
         Type=Application
         Categories=Utility;
         Comment=Assistant for batch song downloading
-        Terminal=false;' > AppDir/usr/share/applications/LSH_Song_Download_Tool.desktop
+        Terminal=false' > AppDir/usr/share/applications/LSH_Song_Download_Tool.desktop
 
         ./squashfs-root/AppRun AppDir/usr/share/applications/LSH_Song_Download_Tool.desktop -appimage \
         -executable=AppDir/usr/bin/LSH_Song_Download_Tool \
