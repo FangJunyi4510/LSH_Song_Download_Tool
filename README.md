@@ -34,6 +34,25 @@
 
 💡 **想象一下**：泡杯咖啡的功夫，程序已协助您整理好 30 首高音质歌曲，整齐排列在MP3中，歌名清爽可读——这就是 `LSH 歌曲下载助手` 带来的下载新体验！
 
+## 🚀 快速开始
+
+### Windows 用户
+1. 从 [Releases 页面](https://github.com/FangJunyi4510/LSH_Song_Download_Tool/releases) 下载 [`windows-release.zip`](https://github.com/FangJunyi4510/LSH_Song_Download_Tool/releases/latest/download/windows-release.zip)。
+
+2. 解压压缩包到任意目录。
+
+3. 双击运行 `LSH_Song_Download_Tool.exe`。
+
+### Linux 用户
+```bash
+# 下载最新版 linux-release.AppImage
+wget https://github.com/FangJunyi4510/LSH_Song_Download_Tool/releases/latest/download/linux-release.AppImage && \
+# 授予执行权限
+chmod +x linux-release.AppImage && \
+# 运行程序
+./linux-release.AppImage
+```
+
 ## 🛠 环境配置
 ```bash
 # 克隆仓库
@@ -48,7 +67,7 @@ cmake --build build
 ## 🎮 使用指南
 ### 初始配置
 
-首次运行点击 `配置` 按钮
+首次运行点击 `配置` 按钮。
 
 #### 1. 设置浏览器可执行文件路径。
 #### 2. 指定浏览器下载目录。
