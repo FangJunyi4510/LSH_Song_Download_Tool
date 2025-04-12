@@ -103,7 +103,7 @@ jobs:
         mkdir -p AppDir/usr/bin
         cp ${{ matrix.exe_path }} AppDir/usr/bin/
 
-        ./linuxdeployqt*.AppImage AppDir/usr/bin/${{ matrix.artifact_name }} -appimage
+        ./linuxdeployqt*.AppImage --appimage-extract AppDir/usr/bin/${{ matrix.artifact_name }} -appimage
 
     - name: Upload Artifacts
       uses: actions/upload-artifact@v4
